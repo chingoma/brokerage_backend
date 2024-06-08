@@ -1,0 +1,80 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Security;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+
+class SecuritiesSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $this->truncateTables();
+
+        try {
+            Schema::disableForeignKeyConstraints();
+            DB::beginTransaction();
+            $this->securities();
+            DB::commit();
+            Schema::enableForeignKeyConstraints();
+        } catch (\Throwable $throwable) {
+            DB::rollBack();
+            $this->command->error($throwable->getMessage());
+            exit();
+        }
+
+    }
+
+    /**
+     * Truncates  table
+     */
+    public function truncateTables(): void
+    {
+        Schema::disableForeignKeyConstraints();
+        DB::table('securities')->truncate();
+        Schema::enableForeignKeyConstraints();
+    }
+
+    private function securities(): void
+    {
+        $securities = [
+            ['id' => '1', 'name' => 'VODA', 'price' => '770', 'type' => 'security', 'bond_number' => 'Voda', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-05-23 23:30:46', 'updated_at' => '2023-12-27 04:55:51', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703681751ef9200ca-3000-4dd4-b824-d93634e34b88.png', 'fullname' => 'Vodacom PLC'],
+            ['id' => '10', 'name' => 'MKCB', 'price' => '780', 'type' => 'security', 'bond_number' => 'MKCB', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:07:11', 'updated_at' => '2023-12-27 04:57:06', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/17036818264da7e8f4-094f-4a8a-bd9f-0feaa2277598.png', 'fullname' => 'Mkombozi Commercial Bank PLC'],
+            ['id' => '11', 'name' => 'MUCOBA', 'price' => '400', 'type' => 'security', 'bond_number' => 'MUCOBA', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:07:25', 'updated_at' => '2023-12-27 04:59:26', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/17036819651f28a8e0-3215-42e9-aec6-970f0f891acf.png', 'fullname' => 'Mufindi Community Bank Ltd.'],
+            ['id' => '12', 'name' => 'NICOL', 'price' => '510', 'type' => 'security', 'bond_number' => 'NICO', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:07:36', 'updated_at' => '2023-12-27 05:01:32', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/170368209275090414-a209-4b51-97b2-fbd600fd7935.png', 'fullname' => 'National Investment Company Limited'],
+            ['id' => '13', 'name' => 'NMB', 'price' => '4620', 'type' => 'security', 'bond_number' => 'NMB', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:07:49', 'updated_at' => '2023-12-27 05:04:25', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/170368226568d7eb42-db78-4bc8-b6ed-d659e3a69fce.png', 'fullname' => 'National Microfinance Bank Plc.'],
+            ['id' => '14', 'name' => 'NMG', 'price' => '270', 'type' => 'security', 'bond_number' => 'NMG', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:07:58', 'updated_at' => '2023-12-27 05:11:56', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703682716b8f2f12f-6b1d-4f4f-9fb7-fd47dedd1d79.jpg', 'fullname' => 'Nation Media Group'],
+            ['id' => '15', 'name' => 'PAL', 'price' => '400', 'type' => 'security', 'bond_number' => 'PAL', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:08:12', 'updated_at' => '2023-12-27 05:13:37', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703682817e25e304e-454d-4577-a7fc-20d9300faf4d.jpg', 'fullname' => 'Precision Air Limited'],
+            ['id' => '16', 'name' => 'SWALA', 'price' => '4500', 'type' => 'security', 'bond_number' => 'SWALA', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:08:24', 'updated_at' => '2023-12-27 05:16:07', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703682967a1a58f5e-c2ab-4802-8973-3bc21a2e79fc.png', 'fullname' => 'Swala Oil & Gas Tanzania Plc.'],
+            ['id' => '17', 'name' => 'SWISS', 'price' => '1600', 'type' => 'security', 'bond_number' => 'SWISS', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:08:39', 'updated_at' => '2023-12-27 05:20:00', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/170368320023bc76d3-c900-4948-8613-46f7366d945a.png', 'fullname' => 'Swissport International Ltd.'],
+            ['id' => '18', 'name' => 'TBL', 'price' => '10900', 'type' => 'security', 'bond_number' => 'TBL', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:08:49', 'updated_at' => '2023-12-27 05:24:54', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703683494e4fa888f-c295-4f56-96e0-0da61f6fa8c7.jpg', 'fullname' => 'Tanzania Breweries Limited '],
+            ['id' => '19', 'name' => 'TCC', 'price' => '17000', 'type' => 'security', 'bond_number' => 'TCC', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:09:01', 'updated_at' => '2023-12-27 22:37:19', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703745439a29cb5cf-2335-4ae3-bfb7-392f85f5f27e.png', 'fullname' => ' Tanzania Cigarette Company Limited'],
+            ['id' => '2', 'name' => 'YETU', 'price' => '510', 'type' => 'security', 'bond_number' => 'Yetu', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-13 08:41:09', 'updated_at' => '2023-12-27 05:27:11', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703683631d6a64c8f-ec9d-441d-b830-c4b69cbdf38f.png', 'fullname' => 'Yetu Microfinance Bank Plc'],
+            ['id' => '20', 'name' => 'TICL', 'price' => '1760', 'type' => 'security', 'bond_number' => 'TCCL', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:09:12', 'updated_at' => '2023-12-27 05:36:42', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/170368420277380c0d-a426-4b78-ad62-bbef1932ab73.png', 'fullname' => 'TCCIA Investment Plc.'],
+            ['id' => '21', 'name' => 'TOL', 'price' => '650', 'type' => 'security', 'bond_number' => 'TOL', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:09:22', 'updated_at' => '2023-12-27 05:36:02', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/170368416252b33ccf-21ab-41e7-8aaa-64af92e543ab.jpg', 'fullname' => 'TOL Gases Limited'],
+            ['id' => '22', 'name' => 'TPCC', 'price' => '4220', 'type' => 'security', 'bond_number' => 'TPCC', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:09:35', 'updated_at' => '2023-12-27 05:38:30', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703684310d9807328-c55a-4d93-bf48-c0966c0f952f.jpg', 'fullname' => 'Tanzania Portland Cement Company Limited '],
+            ['id' => '23', 'name' => 'USL', 'price' => '5', 'type' => 'security', 'bond_number' => 'USL', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:09:47', 'updated_at' => '2023-12-27 06:08:46', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703686126cdfdc8b0-d1ab-4f25-bb61-f35b15a72f5f.jpg', 'fullname' => 'Uchumi Supermarkets Ltd.'],
+            ['id' => '24', 'name' => 'TTP', 'price' => '120', 'type' => 'security', 'bond_number' => 'TTP', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-09-30 00:14:18', 'updated_at' => '2023-12-27 22:22:10', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/17037445306f018921-7cb1-4729-8ce8-288ccd4d0fd8.jpg', 'fullname' => 'Tanzania Tea Packers Limited'],
+            ['id' => '25', 'name' => 'TCCL', 'price' => '210', 'type' => 'security', 'bond_number' => 'TICL', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-11-18 00:17:47', 'updated_at' => '2023-12-27 22:50:41', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/170374624196970606-1f44-4b07-b7ee-13c56958d6db.jpg', 'fullname' => 'Tanga Cement PLC'],
+            ['id' => '3', 'name' => 'CRDB', 'price' => '455', 'type' => 'security', 'bond_number' => 'CRDB', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-13 08:42:00', 'updated_at' => '2023-12-27 05:44:17', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/170368465755bf953b-62ce-4c83-bc9a-27733ce5df98.jpg', 'fullname' => 'CRDB Bank Plc'],
+            ['id' => '368b6ba2-7fb2-48c3-9a23-0e61269ef015', 'name' => 'canwork', 'price' => '1000', 'type' => 'security', 'bond_number' => null, 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2023-03-15 04:34:45', 'updated_at' => '2023-03-15 04:34:53', 'deleted_at' => '2023-03-15 04:34:53', 'logo' => null, 'fullname' => null],
+            ['id' => '4', 'name' => 'JATU', 'price' => '1600', 'type' => 'security', 'bond_number' => 'JATU', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-13 08:42:27', 'updated_at' => '2023-12-27 05:45:54', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703684754d83ba06e-8a2a-44fd-a5e5-2ed8341618a2.png', 'fullname' => 'JATU PLC'],
+            ['id' => '5', 'name' => 'DCB', 'price' => '160', 'type' => 'security', 'bond_number' => 'DCB', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:05:54', 'updated_at' => '2023-12-27 05:49:19', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/17036849599c8adc22-03cd-47ed-9c81-d15cd4df48cb.jpg', 'fullname' => 'DCB Commercial Bank'],
+            ['id' => '6', 'name' => 'DSE', 'price' => '1860', 'type' => 'security', 'bond_number' => 'DSE', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:06:05', 'updated_at' => '2023-12-27 05:49:52', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/17036849929dbea0ff-c320-4e9d-8f9a-29e29e3d476c.jpg', 'fullname' => 'Dar es salaam Stock Exchange'],
+            ['id' => '7', 'name' => 'EABL', 'price' => '3140', 'type' => 'security', 'bond_number' => 'EABL', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:06:24', 'updated_at' => '2023-12-27 05:51:09', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703685069109d8db2-212a-46bc-bd2b-d4d53dac4eb4.jpg', 'fullname' => 'East African Breweries Limited'],
+            ['id' => '8', 'name' => 'MBP', 'price' => '395', 'type' => 'security', 'bond_number' => 'MBP', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:06:44', 'updated_at' => '2023-12-27 05:53:13', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703685193f168ec54-44df-4baa-8c7c-5097dbff9f6f.png', 'fullname' => 'Maendeleo Bank PLC'],
+            ['id' => '9', 'name' => 'MCB', 'price' => '320', 'type' => 'security', 'bond_number' => 'MCB', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2022-06-15 12:06:56', 'updated_at' => '2023-12-27 05:54:30', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703685270c40a0108-cf8a-4829-91ce-10354280dbbf.png', 'fullname' => 'Mwalimu Commercial Bank Plc.'],
+            ['id' => '66be54b9-e45e-45ca-bf6c-7a790eafa258', 'name' => 'KA', 'price' => '80', 'type' => 'security', 'bond_number' => 'KA', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2023-10-27 06:06:17', 'updated_at' => '2023-12-27 06:04:49', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703685889241d6431-c194-46be-8c20-1090e7dd675c.jpg', 'fullname' => 'Kenya Airways'],
+            ['id' => 'fd4781b3-58c9-4329-954b-e746860ad670', 'name' => 'JHL', 'price' => '120', 'type' => 'security', 'bond_number' => 'TTP', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2023-10-27 06:06:40', 'updated_at' => '2023-12-27 22:29:57', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/17037449972948fb8f-54e9-451d-a677-d137ccc2c680.jpg', 'fullname' => 'Jubilee Holdings Limited'],
+            ['id' => 'c5fc84ca-ca68-4252-a372-31f14f3a4220', 'name' => 'KCB', 'price' => '280', 'type' => 'security', 'bond_number' => 'MBP', 'bond_isin' => null, 'bond_coupon' => null, 'bond_tenure' => null, 'bond_issue_date' => null, 'bond_maturity_date' => null, 'bond_issued_amount' => null, 'created_at' => '2023-10-27 06:09:20', 'updated_at' => '2023-12-28 21:58:55', 'deleted_at' => null, 'logo' => 'https://192.168.1.41:40400/storage/images/1703829535bb5e339d-256c-4bca-870e-bd4fd6434ded.jpg', 'fullname' => 'Kenya Commercial Bank Group'],
+        ];
+        foreach ($securities as $security) {
+            Security::create($security);
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "FlexcubeAPI",
+    "alias": "flexcubeapi",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\FlexcubeAPI\\Providers\\FlexcubeAPIServiceProvider"
+    ],
+    "files": []
+}

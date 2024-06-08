@@ -1,0 +1,13 @@
+{
+    "name": "Bonds",
+    "alias": "bonds",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Bonds\\Providers\\BondsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

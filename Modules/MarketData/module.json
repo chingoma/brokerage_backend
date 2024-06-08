@@ -1,0 +1,11 @@
+{
+    "name": "MarketData",
+    "alias": "marketdata",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\MarketData\\Providers\\MarketDataServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e671ef9d-9d6e-462d-9d65-c45765e5c07c" name="Brokerage PRD">
+        <fileTransfer rootFolder="/var/www/html/admin_portal" accessType="SFTP" host="192.168.1.36" port="22" sshConfigId="f64c4881-86df-4f06-9b61-fd223e2a90e3" sshConfig="broker@192.168.1.36:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseSudo="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

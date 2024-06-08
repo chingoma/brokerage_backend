@@ -1,0 +1,13 @@
+{
+    "name": "Audits",
+    "alias": "audits",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Audits\\Providers\\AuditsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

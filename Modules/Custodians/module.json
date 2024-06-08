@@ -1,0 +1,13 @@
+{
+    "name": "Custodians",
+    "alias": "custodians",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Custodians\\Providers\\CustodiansServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

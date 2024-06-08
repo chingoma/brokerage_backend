@@ -1,0 +1,11 @@
+{
+    "name": "NIDA",
+    "alias": "nida",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\NIDA\\Providers\\NIDAServiceProvider"
+    ],
+    "files": []
+}

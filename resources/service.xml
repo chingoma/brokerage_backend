@@ -1,0 +1,182 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="GatewayService" targetNamespace="http://tempuri.org/">
+    <wsp:Policy wsu:Id="CigTxnEndpoint_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken RequireClientCertificate="false"/>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+                <wsaw:UsingAddressing/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://tempuri.org/Imports">
+            <xsd:import schemaLocation="https://192.168.1.40:8443/nida/TZ_CIG/GatewayService.svc?xsd=xsd0" namespace="http://tempuri.org/"/>
+            <xsd:import schemaLocation="https://192.168.1.40:8443/nida/TZ_CIG/GatewayService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xsd:import schemaLocation="https://192.168.1.40:8443/nida/TZ_CIG/GatewayService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/NID_API"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="IGatewayService_OTPVerification_InputMessage">
+        <wsdl:part name="parameters" element="tns:OTPVerification"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_OTPVerification_OutputMessage">
+        <wsdl:part name="parameters" element="tns:OTPVerificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_QueryFullDemographic_InputMessage">
+        <wsdl:part name="parameters" element="tns:QueryFullDemographic"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_QueryFullDemographic_OutputMessage">
+        <wsdl:part name="parameters" element="tns:QueryFullDemographicResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_RQVerification_InputMessage">
+        <wsdl:part name="parameters" element="tns:RQVerification"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_RQVerification_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RQVerificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_BiometricVerification_InputMessage">
+        <wsdl:part name="parameters" element="tns:BiometricVerification"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_BiometricVerification_OutputMessage">
+        <wsdl:part name="parameters" element="tns:BiometricVerificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_TransactionVerification_InputMessage">
+        <wsdl:part name="parameters" element="tns:TransactionVerification"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_TransactionVerification_OutputMessage">
+        <wsdl:part name="parameters" element="tns:TransactionVerificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_IdentificationRequest_InputMessage">
+        <wsdl:part name="parameters" element="tns:IdentificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_IdentificationRequest_OutputMessage">
+        <wsdl:part name="parameters" element="tns:IdentificationRequestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_AltBiometricVerification_InputMessage">
+        <wsdl:part name="parameters" element="tns:AltBiometricVerification"/>
+    </wsdl:message>
+    <wsdl:message name="IGatewayService_AltBiometricVerification_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AltBiometricVerificationResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="IGatewayService">
+        <wsdl:operation name="OTPVerification">
+            <wsdl:input wsaw:Action="http://tempuri.org/IGatewayService/OTPVerification" message="tns:IGatewayService_OTPVerification_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IGatewayService/OTPVerificationResponse" message="tns:IGatewayService_OTPVerification_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="QueryFullDemographic">
+            <wsdl:input wsaw:Action="http://tempuri.org/IGatewayService/QueryFullDemographic" message="tns:IGatewayService_QueryFullDemographic_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IGatewayService/QueryFullDemographicResponse" message="tns:IGatewayService_QueryFullDemographic_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RQVerification">
+            <wsdl:input wsaw:Action="http://tempuri.org/IGatewayService/RQVerification" message="tns:IGatewayService_RQVerification_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IGatewayService/RQVerificationResponse" message="tns:IGatewayService_RQVerification_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="BiometricVerification">
+            <wsdl:input wsaw:Action="http://tempuri.org/IGatewayService/BiometricVerification" message="tns:IGatewayService_BiometricVerification_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IGatewayService/BiometricVerificationResponse" message="tns:IGatewayService_BiometricVerification_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="TransactionVerification">
+            <wsdl:input wsaw:Action="http://tempuri.org/IGatewayService/TransactionVerification" message="tns:IGatewayService_TransactionVerification_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IGatewayService/TransactionVerificationResponse" message="tns:IGatewayService_TransactionVerification_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="IdentificationRequest">
+            <wsdl:input wsaw:Action="http://tempuri.org/IGatewayService/IdentificationRequest" message="tns:IGatewayService_IdentificationRequest_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IGatewayService/IdentificationRequestResponse" message="tns:IGatewayService_IdentificationRequest_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AltBiometricVerification">
+            <wsdl:input wsaw:Action="http://tempuri.org/IGatewayService/AltBiometricVerification" message="tns:IGatewayService_AltBiometricVerification_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IGatewayService/AltBiometricVerificationResponse" message="tns:IGatewayService_AltBiometricVerification_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CigTxnEndpoint" type="tns:IGatewayService">
+        <wsp:PolicyReference URI="#CigTxnEndpoint_policy"/>
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="OTPVerification">
+            <soap12:operation soapAction="http://tempuri.org/IGatewayService/OTPVerification" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="QueryFullDemographic">
+            <soap12:operation soapAction="http://tempuri.org/IGatewayService/QueryFullDemographic" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RQVerification">
+            <soap12:operation soapAction="http://tempuri.org/IGatewayService/RQVerification" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="BiometricVerification">
+            <soap12:operation soapAction="http://tempuri.org/IGatewayService/BiometricVerification" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="TransactionVerification">
+            <soap12:operation soapAction="http://tempuri.org/IGatewayService/TransactionVerification" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="IdentificationRequest">
+            <soap12:operation soapAction="http://tempuri.org/IGatewayService/IdentificationRequest" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AltBiometricVerification">
+            <soap12:operation soapAction="http://tempuri.org/IGatewayService/AltBiometricVerification" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="GatewayService">
+        <wsdl:port name="CigTxnEndpoint" binding="tns:CigTxnEndpoint">
+            <soap12:address location="https://192.168.1.40:8443/nida/TZ_CIG/GatewayService.svc"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>https://192.168.1.40:8443/nida/TZ_CIG/GatewayService.svc</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,13 @@
+{
+    "name": "DealingSheets",
+    "alias": "dealingsheets",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DealingSheets\\Providers\\DealingSheetsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

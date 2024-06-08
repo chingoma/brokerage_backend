@@ -1,0 +1,13 @@
+{
+    "name": "EndOfDayReport",
+    "alias": "endofdayreport",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\EndOfDayReport\\Providers\\EndOfDayReportServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

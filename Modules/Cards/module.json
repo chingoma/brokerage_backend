@@ -1,0 +1,11 @@
+{
+    "name": "Cards",
+    "alias": "cards",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Cards\\Providers\\CardsServiceProvider"
+    ],
+    "files": []
+}

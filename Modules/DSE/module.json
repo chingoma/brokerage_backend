@@ -1,0 +1,11 @@
+{
+    "name": "DSE",
+    "alias": "dse",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DSE\\Providers\\DSEServiceProvider"
+    ],
+    "files": []
+}
